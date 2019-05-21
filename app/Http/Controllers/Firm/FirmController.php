@@ -182,8 +182,10 @@ class FirmController extends Controller
         }
         //显示用户注册信息
         public function listreg(){
-           $appid=$_GET['appid'];
-            $data=FirmModel::where(['app_id'=>$appid])->first();
+          $where=[
+              'u_id'=>Auth::id()
+          ];
+            $data=FirmModel::where($where)->first();
             if($data){
                 $arr=[
                     'errno'=>200,
