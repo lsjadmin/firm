@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+     //phpinfo();
+  return view('welcome');
 });
 //注册
  Route::get('/firm/reg','Firm\FirmController@reg')->middleware('auth');
@@ -26,8 +27,12 @@ Route::middleware('token','num')->group(function(){
  Route::get('/firm/listreg','Firm\FirmController@listreg'); //显示用户信息
 
 });
-
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/firm/text','Swoole\SwooleController@text'); //text
+Route::get('/firm/aa','Swoole\SwooleController@aa'); //测试
+
+Route::get('/firm/token','Wx\WxController@token'); //测试
+
+Route::post('/firm/mass','Wx\WxController@mass'); //群发

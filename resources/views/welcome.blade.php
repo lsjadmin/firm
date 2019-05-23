@@ -85,6 +85,7 @@
                 </div>
 
                 <div class="links">
+                        <button class="aa"><a href="javascript:;" class="button">点击签到</a></button>
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
@@ -97,3 +98,23 @@
         </div>
     </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(function(){
+        $(document).on("click",".button",function(){
+           // alert('aa');
+                $.get(
+                    "/firm/text",
+                        function(res){
+                            console.log(res.error);
+                            if(res.error==1){
+                                alert('签到成功');
+                                $(".aa").html('已经签到');
+                            }else{
+                                alert('签到失败');
+                            }
+                        }
+                )
+        })
+    })
+</script>
